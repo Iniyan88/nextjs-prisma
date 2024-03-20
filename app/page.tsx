@@ -5,7 +5,7 @@ import Link from "next/link";
 interface PostProps {
   id: string;
   title: string;
-  content: string;
+  content: string | null;
   author: string;
 }
 
@@ -14,7 +14,12 @@ async function getPosts(): Promise<PostProps[]> {
     where: { published: true },
     include: { author: { select: { name: true } } },
   });
-  return res;
+  return res.map((post) => ({
+    id: post.id,
+    title: post.title,
+    content: post.content ?? null,
+    author: post.author?.name ?? "Unknown Author check please enter authour da",
+  }));
 }
 
 export default async function Home() {
@@ -31,7 +36,7 @@ export default async function Home() {
             key={post.id}
             id={post.id}
             title={post.title}
-            content={post.content}
+            content={post.content || ""}
             author={post.author}
           />
         );
