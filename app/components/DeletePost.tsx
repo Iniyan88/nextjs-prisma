@@ -16,7 +16,10 @@ export default function DeletePost({ PostId }: { PostId: String }) {
 
   return (
     <div>
-      <button className="bg-black text-white hover:bg-gray-900 font-semibold py-2 px-4 rounded-md shadow-md transition-colors duration-300 ease-in-out">
+      <button
+        onClick={handleDelete}
+        className="bg-black text-white hover:bg-gray-900 font-semibold py-2 px-4 rounded-md shadow-md transition-colors duration-300 ease-in-out"
+      >
         Delete
       </button>
     </div>
