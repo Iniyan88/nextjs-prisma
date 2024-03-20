@@ -9,15 +9,15 @@ export default function AddPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const handleTitleChange = (event) => {
+  const handleTitleChange = (event: any) => {
     setTitle(event.target.value);
   };
 
-  const handleContentChange = (event) => {
+  const handleContentChange = (event: any) => {
     setContent(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
       await fetch("/api/addpost", {
