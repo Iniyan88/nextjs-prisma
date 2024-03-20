@@ -11,7 +11,7 @@ export default function Post({ id, title, content, author }: PostProps) {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 w-full max-w-xl mb-4">
       <h2 className="text-xl font-semibold mb-2 text-gray-800">
-        <span className="text-black">TITLE: </span>
+        <span className="text-black">TITLES: </span>
         {title}
       </h2>
       <h2 className="text-xl font-semibold mb-2  text-gray-800">
