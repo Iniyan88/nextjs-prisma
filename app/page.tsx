@@ -5,7 +5,7 @@ import Link from "next/link";
 interface PostProps {
   id: string;
   title: string;
-  content: string | null;
+  content: string;
   author: string;
 }
 
