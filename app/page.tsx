@@ -14,7 +14,7 @@ async function getPosts(): Promise<PostProps[]> {
     where: { published: true },
     include: { author: { select: { name: true } } },
   });
-  return res.map((post) => ({
+  return res.map((post: any) => ({
     id: post.id,
     title: post.title,
     content: post.content ?? null,
