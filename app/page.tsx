@@ -2,7 +2,14 @@ import prisma from "@/lib/prisma";
 import Post from "./components/Post";
 import Link from "next/link";
 
-async function getPosts() {
+interface PostProps {
+  id: string;
+  title: string;
+  content: string | null;
+  author: string;
+}
+
+async function getPosts(): Promise<PostProps[]> {
   const res = await prisma.post.findMany({
     where: { published: true },
     include: { author: { select: { name: true } } },
@@ -18,14 +25,14 @@ export default async function Home() {
         Add Post
       </Link>
       <h1 className="text-4xl font-bold mt-8 mb-4">Feed</h1>
-      {posts.map((post) => {
+      {posts.map((post: PostProps) => {
         return (
           <Post
             key={post.id}
             id={post.id}
             title={post.title}
             content={post.content}
-            author={post.author.name}
+            author={post.author}
           />
         );
       })}
